@@ -2,8 +2,15 @@ const assert = require('assert');
 const fs = require('fs');
 const mongodb = require('mongodb');
 
-const uri = 'mongodb+srv://demo:demo@ktm-bi-connector-28m2i.gcp.mongodb.net/test?retryWrites=true';
+
+// Single Node Local
+const uri = "mongodb://localhost:27017/admin";
+
+// Atlas Replica Set
+//const uri = 'mongodb+srv://user:password@hostname.cloudprovider.mongodb.net/test?retryWrites=true';
+
 const dbName = 'GridFS';
+console.log("File will be uploaded to database: " + dbName);
 
 const client = new mongodb.MongoClient(uri,{ useNewUrlParser: true });
 
