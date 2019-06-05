@@ -4,9 +4,9 @@ const assert = require('assert');
 
 // MongoDB Connection Parameters
 
-const url = "mongodb+srv://user:password@hostname/?retryWrites=true"
-const dbName = "test";
-const colName = "changestream";
+const url = "mongodb+srv://demo:demo@haufe-lexware-28m2i.mongodb.net/test?retryWrites=true&w=majority"
+const dbName = "bankdata";
+const colName = "customers";
 
 // Create a new MongoClient
 const client = new MongoClient(url, { useNewUrlParser: true });
@@ -22,7 +22,7 @@ client.connect(function (err) {
   
   changeStream.on('change', next => {
     // process next document
-    console.log("Stream!");
+    console.log("New Customer:"+next.fullDocument.name);
   });
 
   //client.close();
