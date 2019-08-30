@@ -4,9 +4,9 @@ const assert = require('assert');
 
 // MongoDB Connection Parameters
 
-const url = "mongodb+srv://demo:demo@haufe-lexware-28m2i.mongodb.net/test?retryWrites=true&w=majority"
-const dbName = "bankdata";
-const colName = "customers";
+const url = "mongodb+srv://demo:demo@hostname.provider.mongodb.net/test?retryWrites=true&w=majority"
+const dbName = "demo";
+const colName = "changestream";
 
 // Create a new MongoClient
 const client = new MongoClient(url, { useNewUrlParser: true });
