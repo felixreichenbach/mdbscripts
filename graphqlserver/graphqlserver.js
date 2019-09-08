@@ -9,7 +9,7 @@ const url = 'mongodb://localhost:27017';
 const dbName = 'myproject';
 
 // Create a new MongoClient
-const client = new MongoClient(url);
+const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Static data set
 const customers = [{ "name": "Felix", "lastname": "Reichenbach" }, { "name": "Simon", "lastname": "Reichenbach" }, { "name": "Felix" }];
