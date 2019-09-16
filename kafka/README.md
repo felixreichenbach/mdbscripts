@@ -1,5 +1,8 @@
 # MongoDB Kafka Connector Demo
 
+Updated documentation: https://docs.google.com/document/d/1ypF-OcleK1ZtC-lnpfB5COD5ESBa9dox-zpGkKBejUo
+
+
 1. Launch t2.medium instance on AWS
 2. sudo yum install java
 3. Install Kafka: <https://kafka.apache.org/documentation/#quickstart>
