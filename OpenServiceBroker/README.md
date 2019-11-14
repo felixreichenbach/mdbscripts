@@ -74,7 +74,7 @@ Get credentials:
 
 ```kubectl get secret atlas-user-1 -n atlas -o yaml```
 
-Decode the base64 encoded values:
+Decode the base64 encoded values (you may have to remove the % signs):
 
 ```
 data:
