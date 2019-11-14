@@ -70,7 +70,28 @@ Show the Atlas GUI and the provisioned user.
 
 ## Connect with the User WIP
 
+Get credentials:
 
+```kubectl get secret atlas-user-1 -n atlas -o yaml```
+
+Decode the base64 encoded values:
+
+```
+data:
+  password: OE9HelhZenhzenVBTUpaMEdVSEQyaGZNa09IU0VydzVES1diVDBlNGxLVT0=
+  uri: bW9uZ29kYitzcnY6Ly8yYjYzYTMwNS0wNmIyLTExZWEtODM2OC0yOG0yaS5tb25nb2RiLm5ldA==
+  username: NjJmMjlmYzgtMDZiYS0xMWVhLTgzNjgtMDI0MmFjMTEwMDAz
+```
+  
+with
+
+```echo < password | uri | username > | base64 --decode```
+
+Connect to the Atlas cluster:
+
+```mongo < data.uri > --username < data.username > ```
+
+Insert some data and show it through the Atlas console.
 
 # Cleanup
 Remove provisioned database users:
