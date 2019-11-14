@@ -94,10 +94,12 @@ Connect to the Atlas cluster:
 Insert some data and show it through the Atlas console.
 
 # Cleanup
-Remove provisioned database users:
+## Remove provisioned database users:
+
 ```svcat unbind my-atlas-cluster -n atlas```
 
 ## Deprovision cluster:
+
 ```svcat deprovision my-atlas-cluster -n atlas```
 
 # Additional commands
