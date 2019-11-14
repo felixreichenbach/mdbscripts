@@ -31,9 +31,11 @@ Then deploy the modified charts with the following command:
 # Demo Flow
 ## Show the Configuration
 Show installed service catalog:
+
 ```helm search service-catalog```
 
 Show Atlas open service broker:
+
 ```svcat get brokers -n atlas```
 
 ## Provision an M10 Cluster on Atlas
@@ -42,25 +44,33 @@ Show the config file replicaSet.yaml
 ```vim replicaSet.yaml```
 
 Deploy the cluster:
+
 ```kubectl apply -f replicaSet.yaml```
+
+List all provisioned instances including status:
+
+```svcat get instances -n atlas```
 
 Show the Atlas GUI and the provisioned cluster.
 
 ## Create a User
 Show the config file user.yaml
+
 ```vim user.yaml```
 
 Deploy the user:
+
 ```kubectl apply -f user.yaml```
+
+Display the provisioned resources
+
+```svcat describe instance my-atlas-cluster -n atlas```
 
 Show the Atlas GUI and the provisioned user.
 
-Display the provisioned resources
-List all provisioned instances including status:
-```svcat get instances -n atlas```
+## Connect with the User WIP
 
 
-```svcat describe instance my-atlas-cluster -n atlas```
 
 # Cleanup
 Remove provisioned database users:
