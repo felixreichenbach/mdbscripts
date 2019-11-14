@@ -31,9 +31,11 @@ Then deploy the modified charts with the following command:
 # Demo Flow
 ## Show the Configuration
 Show installed service catalog:
+
 ```helm search service-catalog```
 
 Show Atlas open service broker:
+
 ```svcat get brokers -n atlas```
 
 ## Provision an M10 Cluster on Atlas
@@ -42,31 +44,62 @@ Show the config file replicaSet.yaml
 ```vim replicaSet.yaml```
 
 Deploy the cluster:
+
 ```kubectl apply -f replicaSet.yaml```
+
+List all provisioned instances including status:
+
+```svcat get instances -n atlas```
 
 Show the Atlas GUI and the provisioned cluster.
 
 ## Create a User
 Show the config file user.yaml
+
 ```vim user.yaml```
 
 Deploy the user:
+
 ```kubectl apply -f user.yaml```
 
-Show the Atlas GUI and the provisioned user.
-
 Display the provisioned resources
-List all provisioned instances including status:
-```svcat get instances -n atlas```
-
 
 ```svcat describe instance my-atlas-cluster -n atlas```
 
+Show the Atlas GUI and the provisioned user.
+
+## Connect with the User WIP
+
+Get credentials:
+
+```kubectl get secret atlas-user-1 -n atlas -o yaml```
+
+Decode the base64 encoded values:
+
+```
+data:
+  password: OE9HelhZenhzenVBTUpaMEdVSEQyaGZNa09IU0VydzVES1diVDBlNGxLVT0=
+  uri: bW9uZ29kYitzcnY6Ly8yYjYzYTMwNS0wNmIyLTExZWEtODM2OC0yOG0yaS5tb25nb2RiLm5ldA==
+  username: NjJmMjlmYzgtMDZiYS0xMWVhLTgzNjgtMDI0MmFjMTEwMDAz
+```
+  
+with
+
+```echo < password | uri | username > | base64 --decode```
+
+Connect to the Atlas cluster:
+
+```mongo < data.uri > --username < data.username > ```
+
+Insert some data and show it through the Atlas console.
+
 # Cleanup
-Remove provisioned database users:
+## Remove provisioned database users:
+
 ```svcat unbind my-atlas-cluster -n atlas```
 
 ## Deprovision cluster:
+
 ```svcat deprovision my-atlas-cluster -n atlas```
 
 # Additional commands
